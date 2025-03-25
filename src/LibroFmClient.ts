@@ -29,6 +29,14 @@ export default class LibroFmClient {
 			}
 			await this.login(this.config.username, this.config.password);
 		}
+		if(!this.config.downloadDir){
+			const downloadDir = await InputHandler.requestDownloadLocation();
+			this.config.change({downloadDir});
+
+			if (!this.config.downloadDir) {
+				throw new Error("Download directory not provided");
+			}
+		}
 	}
 
 	/** Logs in to the Libro.fm API and saves the authToken in the config. */
