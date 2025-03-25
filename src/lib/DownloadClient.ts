@@ -20,7 +20,8 @@ export default class DownloadCLient {
 		filename: string,
 		urls: string[],
 		authToken: string,
-		keepZip = false
+		keepZip = false,
+		directory: string|undefined,
 	): Promise<[string, string[] | false]> {
 		const buffers = await Promise.all(
 			urls.map((url) => DownloadCLient.download(url, authToken))
@@ -39,7 +40,7 @@ export default class DownloadCLient {
 			)
 		);
 
-		const finalPath = path.join(DOWNLOAD_DIR, filename);
+		const finalPath = path.join(directory || DOWNLOAD_DIR, filename);
 		await DownloadCLient.mergeDirectories(paths, finalPath);
 
 		return [finalPath, zipped_files];
