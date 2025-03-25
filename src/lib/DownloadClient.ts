@@ -114,7 +114,7 @@ export default class DownloadCLient {
 			const outputPath = path.join(CACHE_DIR, outputDir);
 
 			if (!fs.existsSync(outputPath)) {
-				fs.mkdirSync(outputPath);
+				fs.mkdirSync(outputPath, {recursive: true});
 			}
 
 			const filePromises: Promise<void>[] = [];

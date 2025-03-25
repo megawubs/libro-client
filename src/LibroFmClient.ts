@@ -117,7 +117,7 @@ export default class LibroFmClient {
 					: book.authors.join(", ");
 
 			const [path, zipped_files] = await DownloadCLient.downloadFiles(
-				filename,
+				[filename, book.title].join('/'),
 				urls,
 				authToken,
 				keepZip,
