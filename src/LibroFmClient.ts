@@ -120,7 +120,8 @@ export default class LibroFmClient {
 				filename,
 				urls,
 				authToken,
-				keepZip
+				keepZip,
+				this.config.downloadDir
 			);
 
 			await DownloadCLient.saveMetadata(book, metadata, path);
