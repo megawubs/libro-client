@@ -154,7 +154,7 @@ export default class DownloadCLient {
 		});
 		try {
 			if (!fs.existsSync(dest)) {
-				fs.mkdirSync(dest);
+				fs.mkdirSync(dest, {recursive: true});
 			}
 
 			for (const dir of src) {
